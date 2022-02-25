@@ -14,7 +14,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _highcontrast = 'false';
+  String _highcontrast = '';
 
   @override
   void initState() {
@@ -24,12 +24,6 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> init() async {
     FlutterHighcontrast();
-
-    if(!mounted) return;
-
-    setState(() {
-      _highcontrast = FlutterHighcontrast().isHighContrastText(context).toString();
-    });
   }
 
   @override
@@ -40,9 +34,22 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text('是否开启高对比度: $_highcontrast\n'),
+          child: Column(
+              mainAxisAlignment:MainAxisAlignment.center,
+              children: [
+          Center(
+          child: Text('是否开启高对比度: ' + _highcontrast),
         ),
+        ElevatedButton(onPressed: () async {
+          setState(() {
+            _highcontrast =
+                FlutterHighcontrast().isHighContrastText(context).toString();
+          });
+        }, child: const Text("Get"))
+        ],
       ),
+    ),)
+    ,
     );
   }
 }
