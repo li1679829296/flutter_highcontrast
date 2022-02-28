@@ -2,13 +2,18 @@
 
 判断当前设备（Android、ios），是否开启无障碍功能内的高对比度模式。
 
-1、初始化
+1、导入
+```dart
+flutter_highcontrast: ^0.0.3
+```
+
+2、初始化
 
 ```dart
 FlutterHighcontrast();
 ```
 
-2、获取是否开启高对比度模式（返回一个bool类型）
+3、获取是否开启高对比度模式（返回一个bool类型）
 
 ```dart
 FlutterHighcontrast().isHighContrastText(context)
